@@ -14,12 +14,12 @@
     <img src="img/doctor.png" class="doctor-img" alt="Dokter ilustrasi">
     <h1 class="title">CareBuddy Hospital</h1>
     <p class="subtitle">Asisten perawatan ringan — edukasi & rekomendasi aman</p>
-    <button id="darkModeBtn" class="btn-toggle">🌙 Mode Gelap</button>
+    <button id="darkModeBtn" class="btn-toggle" aria-pressed="false">🌙 Mode Gelap</button>
   </header>
 
-  <main class="container">
+  <main class="container" role="main">
     <label for="gejala" class="label">Pilih gejala ringan:</label>
-    <select id="gejala" class="input-select">
+    <select id="gejala" class="input-select" aria-label="Pilih gejala">
       <option value="">-- pilih --</option>
       <option value="pusing">Pusing ringan</option>
       <option value="batuk">Batuk ringan</option>
@@ -46,14 +46,14 @@
       <p><strong>Beritahu orang dewasa / guru / orangtua segera.</strong></p>
     </div>
 
-    <a href="pages/edukasi.html" class="btn-edukasi">📘 Edukasi Kesehatan Remaja</a>
+    <a href="pages/edukasi.html" class="btn-edukasi" role="link">📘 Edukasi Kesehatan Remaja</a>
 
     <canvas id="grafik" width="400" height="200" aria-hidden="true"></canvas>
   </main>
 
   <footer><p>CareBuddy © 2025 — Edukasi Aman</p></footer>
 
-  <!-- audio element (will play only after user gesture) -->
+  <!-- audio (preload but play only after user gesture) -->
   <audio id="klikSound" src="sound/click.mp3" preload="auto"></audio>
 
   <script src="script.js"></script>
