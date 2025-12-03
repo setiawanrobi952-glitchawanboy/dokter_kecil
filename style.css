@@ -1,65 +1,182 @@
-/* == background image == */
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body */
+body {
+  font-family: "Poppins", sans-serif;
+  background: #eef4ff;
+  color: #333;
+  padding: 20px;
+  overflow-x: hidden;
+}
+
+/* Background hospital */
 .hospital-bg {
   position: fixed;
   top: 0;
   left: 0;
-  width: 150%;
-  opacity: 0.12;
+  width: 110%;
+  opacity: 0.15;
   z-index: -1;
-  animation: bgMove 22s linear infinite;
 }
-@keyframes bgMove { from { transform: translateX(0); } to { transform: translateX(-300px); } }
 
-/* == base == */
-:root{
-  --bg: #e7f7ff;
-  --text: #00334e;
-  --card: #fff;
-  --accent: #0095d8;
-  --muted: #6b7c86;
+/* Header */
+header {
+  text-align: center;
+  margin-bottom: 30px;
 }
-body {
-  margin:0;
-  font-family: "Poppins", system-ui, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  transition: background .25s linear, color .25s linear;
-  overflow-x:hidden;
+
+.doctor-img {
+  width: 180px;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.2));
 }
-.dark { background:#071f2c; color: #eaffff; }
 
-/* header */
-header { text-align:center; padding:22px 10px; z-index:2; position:relative; }
-.doctor-img { width:150px; animation: float 3s ease-in-out infinite; display:block; margin:0 auto; }
-@keyframes float { 0%{transform:translateY(0)}50%{transform:translateY(-10px)}100%{transform:translateY(0)} }
-.title{ font-size:30px; color:#007acc; margin:8px 0 6px; }
-.subtitle{ color:var(--muted); margin:0 0 10px; }
-.dark .title{ color:#79c7ff; }
-
-/* container */
-.container{
-  max-width:520px; margin:14px auto; padding:18px; background:var(--card);
-  border-radius:14px; box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+.title {
+  font-size: 2.2rem;
+  margin-top: 10px;
 }
-.dark .container{ background:#0e3a4e; }
 
-/* inputs & buttons */
-.input-select{ width:100%; padding:12px; border-radius:10px; border:2px solid #0093d1; font-size:15px; }
-.btn-main, .btn-warning, .btn-edukasi, .btn-toggle{
-  margin-top:12px; padding:12px; border-radius:10px; border:none; cursor:pointer; font-size:16px;
+.subtitle {
+  font-size: 1rem;
+  opacity: 0.7;
+  margin-bottom: 15px;
 }
-.btn-main{ background:var(--accent); color:#fff; width:100%; }
-.btn-warning{ background:#f5b400; color:#00334e; width:100%; }
-.btn-edukasi{ display:block; background:#2ca44b; color:#fff; text-align:center; text-decoration:none; padding:12px; border-radius:10px; }
 
-/* card / warning */
-.card{ background:#e9f6ff; padding:12px; border-radius:10px; margin-top:12px; color:inherit; }
-.dark .card{ background:#12485f; color:#eaffff; }
-.warning{ background:#fff3cd; padding:12px; border-radius:10px; margin-top:12px; }
-.dark .warning{ background:#ad7900; color:#fff; }
+.btn-toggle {
+  margin-top: 10px;
+  padding: 10px 18px;
+  background: #4b6aff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
 
-/* footer */
-footer { text-align:center; padding:14px 8px; color: #006999; }
+/* Container */
+.container {
+  max-width: 480px;
+  margin: auto;
+}
 
-/* hidden helper */
-.hidden{ display:none; }
+/* Label */
+.label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+/* Select */
+.input-select {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #a6b7ff;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  background: white;
+  font-size: 1rem;
+}
+
+/* Main button */
+.btn-main {
+  width: 100%;
+  background: #4b6aff;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-main:hover {
+  background: #3a55dd;
+}
+
+/* Card Results */
+.card {
+  margin-top: 20px;
+  padding: 18px;
+  background: rgba(255,255,255,0.65);
+  border-radius: 12px;
+  backdrop-filter: blur(7px);
+  box-shadow: 0 5px 14px rgba(0,0,0,0.1);
+  animation: fadeIn 0.3s ease;
+}
+
+.hidden { display: none; }
+
+/* Warning button */
+.btn-warning {
+  margin-top: 20px;
+  width: 100%;
+  background: #ff4b4b;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* Warning box */
+.warning {
+  background: rgba(255, 223, 223, 0.9);
+  border-left: 5px solid #ff4b4b;
+  padding: 15px;
+  margin-top: 15px;
+  border-radius: 10px;
+}
+
+/* Education link button */
+.btn-edukasi {
+  display: block;
+  text-align: center;
+  margin-top: 25px;
+  padding: 12px;
+  background: #00b894;
+  color: white;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  margin-top: 25px;
+  opacity: 0.6;
+}
+
+/* Dark Mode */
+.dark {
+  background: #1e1e1e;
+  color: #f2f2f2;
+}
+
+.dark .card {
+  background: rgba(40,40,40,0.8);
+}
+
+.dark .input-select {
+  background: #2c2c2c;
+  color: white;
+  border-color: #555;
+}
+
+.dark .btn-main {
+  background: #5568ff;
+}
+
+.dark .btn-toggle {
+  background: #222;
+}
+
+/* Animasi */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+  }
