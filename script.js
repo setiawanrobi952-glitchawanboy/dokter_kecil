@@ -4,24 +4,31 @@ function tampilkanSaran() {
 
     let saran = "";
 
-    if (gejala === "pusing") {
-        saran = "Cobalah istirahat, minum air, dan jauhi layar sebentar.";
-    } else if (gejala === "batuk") {
-        saran = "Minum air hangat, hindari minuman dingin, dan istirahat cukup.";
-    } else if (gejala === "pilek") {
-        saran = "Gunakan air hangat, mandi hangat, dan banyak minum air.";
-    } else if (gejala === "tenggorokan") {
-        saran = "Minum air hangat atau teh madu, hindari makanan pedas.";
-    } else if (gejala === "capek") {
-        saran = "Istirahat minimal 20 menit dan minum cukup air.";
-    } else if (gejala === "demam") {
-        saran = "Istirahat, minum air hangat, gunakan kompres hangat.";
-    } else {
-        saran = "Silakan pilih gejala terlebih dahulu.";
+    switch (gejala) {
+        case "pusing":
+            saran = "Istirahat di tempat tenang, minum air, dan hindari layar sementara.";
+            break;
+        case "batuk":
+            saran = "Minum air hangat, hindari minuman dingin, dan istirahat cukup.";
+            break;
+        case "pilek":
+            saran = "Cuci hidung dengan air hangat dan banyak minum air.";
+            break;
+        case "tenggorokan":
+            saran = "Minum teh madu hangat dan hindari makanan berminyak.";
+            break;
+        case "capek":
+            saran = "Istirahat 20–30 menit dan minum air putih.";
+            break;
+        case "demam":
+            saran = "Istirahat, minum air hangat, dan gunakan kompres hangat.";
+            break;
+        default:
+            saran = "Silakan pilih gejala terlebih dahulu.";
     }
 
-    hasil.style.display = "block";
-    hasil.innerHTML = "<strong>Saran:</strong><br>" + saran;
+    hasil.classList.remove("hidden");
+    hasil.innerHTML = `<strong>Saran Perawatan:</strong><br>${saran}`;
 }
 
 document.getElementById("warningBtn").onclick = function() {
