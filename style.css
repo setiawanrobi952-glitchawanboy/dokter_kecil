@@ -1,26 +1,35 @@
-/* == background image animasi == */
+/* == background & clouds (optional) == */
 .hospital-bg {
   position: fixed;
   top: 0;
   left: 0;
   width: 150%;
   opacity: 0.16;
-  z-index: -1;
-  animation: bgMove 35s linear infinite, hospitalGlow 6s ease-in-out infinite;
+  z-index: -2;
   pointer-events: none;
+  animation: bgMove 35s linear infinite, hospitalGlow 6s ease-in-out infinite;
 }
-@keyframes bgMove {
-  from { transform: translateX(0); }
-  to { transform: translateX(-350px); }
-}
-@keyframes hospitalGlow {
-  0% { opacity: .15; }
-  50% { opacity: .23; }
-  100% { opacity: .15; }
-}
+@keyframes bgMove { from { transform: translateX(0);} to { transform: translateX(-350px);} }
+@keyframes hospitalGlow { 0%{opacity:.15}50%{opacity:.24}100%{opacity:.15}}
 
-/* == base == */
-:root{
+/* optional moving clouds */
+body::before {
+  content: "";
+  position: fixed;
+  top:0;
+  left:0;
+  width:200%;
+  height:100%;
+  background: url("img/clouds.png") repeat-x;
+  opacity:0.22;
+  animation: awan 60s linear infinite;
+  z-index:-3;
+  pointer-events:none;
+}
+@keyframes awan { from { transform: translateX(0);} to { transform: translateX(-600px);} }
+
+/* == base colors == */
+:root {
   --bg: #e7f7ff;
   --text: #00334e;
   --card: #fff;
@@ -35,7 +44,7 @@ body {
   transition: background .25s linear, color .25s linear;
   overflow-x:hidden;
 }
-.dark { background:#071f2c; color: #eaffff; }
+.dark { background:#071f2c; color:#eaffff; }
 
 /* header */
 header {
@@ -44,39 +53,26 @@ header {
   z-index:2;
   position:relative;
 }
-
-/* dokter melayang + melambaikan tangan */
 .doctor-img {
   width:150px;
   display:block;
   margin:0 auto;
-  animation: float 3s ease-in-out infinite, wave 2s ease-in-out infinite;
+  animation: float 3s ease-in-out infinite, wave 2.2s ease-in-out infinite;
 }
-@keyframes float {
-  0%{ transform:translateY(0); }
-  50%{ transform:translateY(-10px); }
-  100%{ transform:translateY(0); }
-}
-@keyframes wave {
-  0% { transform:rotate(0deg) scale(1); }
-  50% { transform:rotate(3deg) scale(1.02); }
-  100% { transform:rotate(0deg) scale(1); }
-}
+@keyframes float { 0%{transform:translateY(0)}50%{transform:translateY(-10px)}100%{transform:translateY(0)} }
+@keyframes wave { 0%{transform:rotate(0deg)}50%{transform:rotate(3deg)}100%{transform:rotate(0deg)} }
 
 .title {
   font-size:30px;
   color:#007acc;
   margin:8px 0 6px;
-  text-shadow:0 0 6px rgba(0,122,204,0.3);
+  text-shadow:0 0 6px rgba(0,122,204,0.28);
+  animation: titleGlow 3.5s ease-in-out infinite;
 }
-.subtitle {
-  color:var(--muted);
-  margin:0 0 10px;
-}
-.dark .title {
-  color:#79c7ff;
-  text-shadow:0 0 12px rgba(120,215,255,0.45);
-}
+@keyframes titleGlow { 0%{text-shadow:0 0 6px rgba(0,122,204,0.18)}50%{text-shadow:0 0 14px rgba(0,122,204,0.45)}100%{text-shadow:0 0 6px rgba(0,122,204,0.18)} }
+
+.subtitle { color:var(--muted); margin:0 0 10px; }
+.dark .title { color:#79c7ff; }
 
 /* container */
 .container {
@@ -88,96 +84,32 @@ header {
   box-shadow: 0 6px 20px rgba(0,0,0,0.12);
   animation: fadeIn .7s ease-out;
 }
-@keyframes fadeIn {
-  from { opacity:0; transform:translateY(10px); }
-  to { opacity:1; transform:translateY(0); }
-}
+@keyframes fadeIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
 .dark .container { background:#0e3a4e; }
 
 /* inputs & buttons */
-.input-select{
-  width:100%;
-  padding:12px;
-  border-radius:10px;
-  border:2px solid #0093d1;
-  font-size:15px;
-}
+.input-select { width:100%; padding:12px; border-radius:10px; border:2px solid #0093d1; font-size:15px; }
 
 .btn-main, .btn-warning, .btn-edukasi, .btn-toggle {
-  margin-top:12px;
-  padding:12px;
-  border-radius:10px;
-  border:none;
-  cursor:pointer;
-  font-size:16px;
-  transition: transform .12s, box-shadow .12s;
+  margin-top:12px; padding:12px; border-radius:10px; border:none; cursor:pointer; font-size:16px;
+  transition: transform .12s ease, box-shadow .12s ease;
 }
+button:active, .btn-edukasi:active { transform: scale(0.96); box-shadow:none; }
+.btn-main { background:var(--accent); color:#fff; width:100%; box-shadow:0 4px 10px rgba(0,150,220,0.26); }
+.btn-warning { background:#f5b400; color:#00334e; width:100%; }
+.btn-edukasi { display:block; background:#2ca44b; color:#fff; text-align:center; text-decoration:none; padding:12px; border-radius:10px; }
 
-/* efek klik tombol */
-button:active, .btn-edukasi:active {
-  transform: scale(0.92);
-  box-shadow: none !important;
-}
+/* card & warning */
+.card { background:#e9f6ff; padding:12px; border-radius:10px; margin-top:12px; color:inherit; display:none; }
+.card.show { display:block; animation: cardPop .45s ease-out; }
+@keyframes cardPop { 0%{opacity:0;transform:scale(0.94)}100%{opacity:1;transform:scale(1)} }
 
-.btn-main {
-  background:var(--accent);
-  color:#fff;
-  width:100%;
-  box-shadow:0 4px 10px rgba(0,150,220,0.3);
-}
-.btn-warning {
-  background:#f5b400;
-  color:#00334e;
-  width:100%;
-}
-.btn-edukasi {
-  display:block;
-  background:#2ca44b;
-  color:#fff;
-  text-align:center;
-  text-decoration:none;
-  padding:12px;
-  border-radius:10px;
-  box-shadow:0 3px 10px rgba(0,140,40,0.35);
-}
-
-/* card hasil */
-.card {
-  background:#e9f6ff;
-  padding:12px;
-  border-radius:10px;
-  margin-top:12px;
-  color:inherit;
-  display:none;
-}
 .dark .card { background:#12485f; color:#eaffff; }
-
-/* animasi card pop */
-.card.show {
-  display:block;
-  animation: cardPop .45s ease-out;
-}
-@keyframes cardPop {
-  0% { opacity:0; transform:scale(0.92); }
-  100% { opacity:1; transform:scale(1); }
-}
-
-/* warning box */
-.warning {
-  background:#fff3cd;
-  padding:12px;
-  border-radius:10px;
-  margin-top:12px;
-  display:none;
-}
-.dark .warning{ background:#ad7900; color:#fff; }
+.warning { background:#fff3cd; padding:12px; border-radius:10px; margin-top:12px; display:none; }
+.dark .warning { background:#ad7900; color:#fff; }
 
 /* footer */
-footer {
-  text-align:center;
-  padding:14px 8px;
-  color: #006999;
-}
+footer { text-align:center; padding:14px 8px; color:#006999; }
 
-/* helper */
-.hidden{ display:none; }
+/* helpers */
+.hidden { display:none; }
