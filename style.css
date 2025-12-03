@@ -1,3 +1,5 @@
+/* GENERAL */
+
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
@@ -7,28 +9,41 @@ body {
     transition: 0.3s;
 }
 
+/* MODE GELAP */
 .dark {
     background: #072029;
     color: #e6f7ff;
 }
 
+.dark .container {
+    background: #0d2c3a;
+}
+
+.dark .title {
+    color: #78c7ff;
+}
+
+/* BACKGROUND GERAK */
 .hospital-bg {
     position: fixed;
+    width: 150%;
     top: 0;
     left: 0;
-    width: 120%;
     opacity: 0.15;
-    animation: bgMove 20s linear infinite;
+    animation: bgMove 18s linear infinite;
 }
 
 @keyframes bgMove {
     from { transform: translateX(0); }
-    to { transform: translateX(-200px); }
+    to { transform: translateX(-250px); }
 }
 
+/* HEADER */
 header {
     text-align: center;
     padding: 30px 10px;
+    position: relative;
+    z-index: 5;
 }
 
 .doctor-img {
@@ -47,32 +62,106 @@ header {
     color: #007acc;
 }
 
-.dark .title {
-    color: #78c7ff;
-}
-
+/* CONTAINER */
 .container {
     background: #ffffff;
     padding: 20px;
-    margin: 20px auto;
+    width: 90%;
     max-width: 500px;
+    margin: 20px auto;
     border-radius: 15px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.15);
     backdrop-filter: blur(5px);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
     position: relative;
-    z-index: 3;
+    z-index: 10;
 }
 
-.dark .container {
-    background: #0d2c3a;
+/* INPUT */
+.input-select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #0093d1;
+    border-radius: 10px;
+    margin: 10px 0 20px 0;
+    font-size: 16px;
+}
+
+/* BUTTONS */
+.btn-main {
+    width: 100%;
+    padding: 12px;
+    background: #00a6e0;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
 .btn-toggle {
     padding: 8px 14px;
     border: none;
+    border-radius: 10px;
     background: #0095d8;
     color: white;
-    border-radius: 10px;
     cursor: pointer;
-    margin-top: 8px;
+}
+
+.btn-warning {
+    width: 100%;
+    padding: 12px;
+    background: #ffc107;
+    border: none;
+    border-radius: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.btn-edukasi {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background: #4caf50;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 10px;
+    margin-top: 15px;
+}
+
+/* CARD */
+.card {
+    background: #f0faff;
+    padding: 15px;
+    margin-top: 20px;
+    border-left: 5px solid #00a6e0;
+    border-radius: 10px;
+    font-size: 17px;
+    animation: fadeIn 0.4s ease;
+}
+
+.warning {
+    background: #fff4d9;
+    padding: 15px;
+    border-left: 5px solid #ff9300;
+    border-radius: 10px;
+    margin-top: 20px;
+    animation: fadeIn 0.4s ease;
+}
+
+.hidden {
+    display: none;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 15px;
+    color: #006999;
     }
