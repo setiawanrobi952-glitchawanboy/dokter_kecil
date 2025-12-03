@@ -1,61 +1,61 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CareBuddy Hospital</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CareBuddy Hospital</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- Background image -->
+  <img src="img/hospital-bg.png" class="hospital-bg" alt="Background Rumah Sakit">
 
-    <img src="img/hospital-bg.png" class="hospital-bg" alt="background rumah sakit">
+  <header>
+    <img src="img/doctor.png" class="doctor-img" alt="Dokter ilustrasi">
+    <h1 class="title">CareBuddy Hospital</h1>
+    <p class="subtitle">Asisten perawatan ringan — edukasi & rekomendasi aman</p>
+    <button id="darkModeBtn" class="btn-toggle">🌙 Mode Gelap</button>
+  </header>
 
-    <header>
-        <img src="img/doctor.png" class="doctor-img" alt="Dokter">
-        <h1 class="title">CareBuddy Hospital</h1>
-        <p class="subtitle">Asisten perawatan ringan ber-nuansa rumah sakit</p>
+  <main class="container">
+    <label for="gejala" class="label">Pilih gejala ringan:</label>
+    <select id="gejala" class="input-select">
+      <option value="">-- pilih --</option>
+      <option value="pusing">Pusing ringan</option>
+      <option value="batuk">Batuk ringan</option>
+      <option value="pilek">Pilek</option>
+      <option value="tenggorokan">Sakit tenggorokan</option>
+      <option value="capek">Kecapekan</option>
+      <option value="demam">Demam ringan</option>
+    </select>
 
-        <button id="darkModeBtn" class="btn-toggle">🌙 Mode Gelap</button>
-    </header>
+    <button id="btnSaran" class="btn-main">Dapatkan Saran</button>
 
-    <div class="container">
+    <div id="hasil" class="card hidden" aria-live="polite"></div>
 
-        <label for="gejala" class="label">Pilih gejala ringan:</label>
-        <select id="gejala" class="input-select">
-            <option value="">-- pilih --</option>
-            <option value="pusing">Pusing ringan</option>
-            <option value="batuk">Batuk ringan</option>
-            <option value="pilek">Pilek</option>
-            <option value="tenggorokan">Sakit tenggorokan</option>
-            <option value="capek">Kecapekan</option>
-            <option value="demam">Demam ringan</option>
-        </select>
+    <button id="warningBtn" class="btn-warning">Kapan Harus ke Dokter?</button>
 
-        <button class="btn-main" onclick="tampilkanSaran()">Dapatkan Saran</button>
-        <div id="hasil" class="card hidden"></div>
-
-        <button id="warningBtn" class="btn-warning">Kapan Harus ke Dokter?</button>
-
-        <div id="warningBox" class="warning hidden">
-            <h3>Segera ke dokter jika:</h3>
-            <ul>
-                <li>Gejala memburuk setelah beberapa hari</li>
-                <li>Sulit bernapas atau merasa sangat lemah</li>
-                <li>Demam tinggi yang tidak turun</li>
-            </ul>
-            <p><b>Selalu minta bantuan orang dewasa ya!</b></p>
-        </div>
-
-        <a href="pages/edukasi.html" class="btn-edukasi">📘 Edukasi Kesehatan Remaja</a>
-
-        <canvas id="grafik" width="400" height="200"></canvas>
+    <div id="warningBox" class="warning hidden" role="region" aria-label="Peringatan medis">
+      <h3>Segera ke dokter jika:</h3>
+      <ul>
+        <li>Gejala memburuk dalam beberapa hari</li>
+        <li>Muncul kesulitan bernapas</li>
+        <li>Demam tinggi tidak turun</li>
+        <li>Nyeri hebat atau pingsan</li>
+      </ul>
+      <p><strong>Beritahu orang dewasa / guru / orangtua segera.</strong></p>
     </div>
 
-    <footer>
-        <p>CareBuddy © 2025 – Edukasi Aman</p>
-    </footer>
+    <a href="pages/edukasi.html" class="btn-edukasi">📘 Edukasi Kesehatan Remaja</a>
 
-    <audio id="klikSound" src="sound/click.mp3"></audio>
-    <script src="script.js"></script>
+    <canvas id="grafik" width="400" height="200" aria-hidden="true"></canvas>
+  </main>
+
+  <footer><p>CareBuddy © 2025 — Edukasi Aman</p></footer>
+
+  <!-- audio element (will play only after user gesture) -->
+  <audio id="klikSound" src="sound/click.mp3" preload="auto"></audio>
+
+  <script src="script.js"></script>
 </body>
-        </html>
+</html>
