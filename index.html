@@ -3,18 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CareBuddy - Perawatan Ringan</title>
+    <title>CareBuddy - Hospital Edition</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="container">
-        <h1>CareBuddy</h1>
-        <p class="subtitle">Rekomendasi perawatan aman untuk keluhan ringan</p>
+    <header>
+        <img src="img/doctor.png" class="doctor-img" alt="Dokter">
+        <h1 class="title">CareBuddy Hospital</h1>
+        <p class="subtitle">Rekomendasi perawatan ringan dengan nuansa rumah sakit</p>
+    </header>
 
-        <label for="gejala">Pilih gejala yang kamu rasakan:</label>
-        <select id="gejala">
-            <option value="">-- pilih gejala --</option>
+    <div class="container">
+
+        <label for="gejala" class="label">Pilih gejala ringan:</label>
+        <select id="gejala" class="input-select">
+            <option value="">-- pilih --</option>
             <option value="pusing">Pusing ringan</option>
             <option value="batuk">Batuk ringan</option>
             <option value="pilek">Pilek</option>
@@ -23,23 +27,28 @@
             <option value="demam">Demam ringan</option>
         </select>
 
-        <button onclick="tampilkanSaran()">Dapatkan Saran</button>
+        <button class="btn-main" onclick="tampilkanSaran()">Dapatkan Saran</button>
 
-        <div id="hasil" class="card"></div>
+        <div id="hasil" class="card hidden"></div>
 
-        <button id="warningBtn">Kapan Harus ke Dokter?</button>
+        <button id="warningBtn" class="btn-warning">Kapan Harus ke Dokter?</button>
+
         <div id="warningBox" class="warning hidden">
+            <h3>Segera ke dokter jika:</h3>
             <ul>
-                <li>Gejala makin parah dalam 2–3 hari.</li>
-                <li>Sulit bernapas.</li>
-                <li>Demam tinggi yang tidak turun.</li>
-                <li>Nyeri sangat kuat.</li>
-                <li>Mual hebat atau tidak bisa makan/minum.</li>
+                <li>Gejala memburuk dalam beberapa hari</li>
+                <li>Muncul kesulitan bernapas</li>
+                <li>Demam tinggi tidak turun</li>
+                <li>Nyeri hebat</li>
             </ul>
-            <p><strong>Jika salah satu terjadi, segera minta bantuan orang dewasa untuk ke fasilitas kesehatan.</strong></p>
+            <p><b>Segera minta bantuan orang dewasa.</b></p>
         </div>
     </div>
 
+    <footer>
+        <p>CareBuddy © 2025 – Edukasi Perawatan Aman</p>
+    </footer>
+
     <script src="script.js"></script>
 </body>
-  </html>
+</html>
