@@ -3,15 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CareBuddy - Hospital Edition</title>
+    <title>CareBuddy Hospital</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <img src="img/hospital-bg.png" class="hospital-bg" alt="background rumah sakit">
+
     <header>
         <img src="img/doctor.png" class="doctor-img" alt="Dokter">
         <h1 class="title">CareBuddy Hospital</h1>
-        <p class="subtitle">Rekomendasi perawatan ringan dengan nuansa rumah sakit</p>
+        <p class="subtitle">Asisten perawatan ringan dengan nuansa rumah sakit</p>
+
+        <button id="darkModeBtn" class="btn-toggle">🌙 Mode Gelap</button>
     </header>
 
     <div class="container">
@@ -32,7 +36,6 @@
         <div id="hasil" class="card hidden"></div>
 
         <button id="warningBtn" class="btn-warning">Kapan Harus ke Dokter?</button>
-
         <div id="warningBox" class="warning hidden">
             <h3>Segera ke dokter jika:</h3>
             <ul>
@@ -43,11 +46,17 @@
             </ul>
             <p><b>Segera minta bantuan orang dewasa.</b></p>
         </div>
+
+        <a href="pages/edukasi.html" class="btn-edukasi">📘 Edukasi Kesehatan Remaja</a>
+
+        <canvas id="grafik" width="400" height="200"></canvas>
     </div>
 
     <footer>
         <p>CareBuddy © 2025 – Edukasi Perawatan Aman</p>
     </footer>
+
+    <audio id="klikSound" src="sound/click.mp3"></audio>
 
     <script src="script.js"></script>
 </body>
