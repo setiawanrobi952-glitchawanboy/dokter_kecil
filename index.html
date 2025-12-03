@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareBuddy - Perawatan Ringan</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>CareBuddy</h1>
+        <p class="subtitle">Rekomendasi perawatan aman untuk keluhan ringan</p>
+
+        <label for="gejala">Pilih gejala yang kamu rasakan:</label>
+        <select id="gejala">
+            <option value="">-- pilih gejala --</option>
+            <option value="pusing">Pusing ringan</option>
+            <option value="batuk">Batuk ringan</option>
+            <option value="pilek">Pilek</option>
+            <option value="tenggorokan">Sakit tenggorokan</option>
+            <option value="capek">Kecapekan</option>
+            <option value="demam">Demam ringan</option>
+        </select>
+
+        <button onclick="tampilkanSaran()">Dapatkan Saran</button>
+
+        <div id="hasil" class="card"></div>
+
+        <button id="warningBtn">Kapan Harus ke Dokter?</button>
+        <div id="warningBox" class="warning hidden">
+            <ul>
+                <li>Gejala makin parah dalam 2–3 hari.</li>
+                <li>Sulit bernapas.</li>
+                <li>Demam tinggi yang tidak turun.</li>
+                <li>Nyeri sangat kuat.</li>
+                <li>Mual hebat atau tidak bisa makan/minum.</li>
+            </ul>
+            <p><strong>Jika salah satu terjadi, segera minta bantuan orang dewasa untuk ke fasilitas kesehatan.</strong></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+  </html>
