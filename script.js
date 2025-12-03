@@ -1,75 +1,67 @@
-// SOUND
+// PLAY SOUND
 function playSound() {
-    document.getElementById("klikSound").play();
+    const sound = document.getElementById("klikSound");
+    sound.currentTime = 0;
+    sound.play();
 }
 
-// TAMPILKAN SARAN
+// TAMPILKAN SARAN AMAN
 function tampilkanSaran() {
     playSound();
+
     const gejala = document.getElementById("gejala").value;
     const hasil = document.getElementById("hasil");
     let saran = "";
 
-    switch (gejala) {
-        case "pusing":
-            saran = "Istirahat di tempat tenang, minum air, dan hindari layar.";
-            break;
-        case "batuk":
-            saran = "Minum air hangat, hindari minuman dingin.";
-            break;
-        case "pilek":
-            saran = "Cuci hidung dengan air hangat dan banyak minum.";
-            break;
-        case "tenggorokan":
-            saran = "Minum teh madu hangat, hindari makanan berminyak.";
-            break;
-        case "capek":
-            saran = "Istirahat 20 menit dan minum air putih.";
-            break;
-        case "demam":
-            saran = "Istirahat, minum air hangat, kompres hangat.";
-            break;
-        default:
-            saran = "Silakan pilih gejala.";
-    }
+    const rekomendasi = {
+        pusing: "Istirahat di tempat tenang dan minum air putih.",
+        batuk: "Minum air hangat dan istirahat cukup.",
+        pilek: "Minum air hangat dan jaga kebersihan tangan.",
+        tenggorokan: "Minum minuman hangat seperti teh madu.",
+        capek: "Istirahat 20–30 menit dan minum air putih.",
+        demam: "Istirahat, banyak minum, dan gunakan kompres hangat."
+    };
+
+    saran = rekomendasi[gejala] || "Silakan pilih gejala.";
 
     hasil.classList.remove("hidden");
     hasil.innerHTML = `<strong>Saran Perawatan:</strong><br>${saran}`;
 }
 
 // WARNING
-document.getElementById("warningBtn").onclick = function() {
+document.getElementById("warningBtn").onclick = function () {
     playSound();
     document.getElementById("warningBox").classList.toggle("hidden");
 };
 
 // MODE GELAP
-document.getElementById("darkModeBtn").onclick = function() {
+document.getElementById("darkModeBtn").onclick = function () {
     playSound();
     document.body.classList.toggle("dark");
 };
 
-// PENGINGAT MINUM AIR: setiap 30 menit
+// PENGINGAT MINUM AIR (30 menit)
 setInterval(() => {
-    alert("💧 Waktunya minum air! Jaga tubuh tetap terhidrasi ya.");
-}, 1800000); // 30 menit
+    alert("💧 Waktunya minum air! Tubuh kamu butuh hidrasi.");
+}, 1800000);
 
 // GRAFIK SEDERHANA
-const canvas = document.getElementById("grafik").getContext("2d");
+const ctx = document.getElementById("grafik").getContext("2d");
 let data = [2, 3, 4, 3, 5, 4];
 
 function drawGraph() {
-    canvas.clearRect(0, 0, 400, 200);
-    canvas.beginPath();
-    canvas.moveTo(0, 200 - data[0] * 20);
+    ctx.clearRect(0, 0, 400, 200);
+
+    ctx.beginPath();
+    ctx.moveTo(0, 200 - data[0] * 20);
 
     for (let i = 1; i < data.length; i++) {
-        canvas.lineTo(i * 70, 200 - data[i] * 20);
+        ctx.lineTo(i * 70, 200 - data[i] * 20);
     }
 
-    canvas.strokeStyle = "#007acc";
-    canvas.lineWidth = 3;
-    canvas.stroke();
+    ctx.strokeStyle = "#007acc";
+    ctx.lineWidth = 3;
+    ctx.stroke();
 }
 
 drawGraph();
